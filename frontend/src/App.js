@@ -22,5 +22,6 @@ const Main = styled.main`
 
     h1 {
         color: hotpink;
+        text-align: center;
     }
 `;

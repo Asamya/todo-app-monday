@@ -1,21 +1,16 @@
-import React, {useState} from "react";
-import {postToDo} from "../service/todo-service";
+import React from "react";
 import styled from "styled-components";
+import useToDoForm from "../hooks/useToDoForm";
 
 export default function ToDoForm({addToDo}) {
-    const[description, setDescription] = useState('Da jetzt hier, vielleicht was eintragen oder so')
 
-    const changeDescription = event => setDescription(event.target.value);
-    const submitForm = event => {
-        event.preventDefault();
-        addToDo({description, status:"OPEN"})
-    };
+    const {changeDescription, submitForm, description} = useToDoForm(addToDo);
 
-    return <StyledForm onSubmit={submitForm} >
+    return <StyledForm onSubmit={submitForm}>
             <label>Please enter description:
                 <input type='text' value={description} onChange={changeDescription}/>
-                <button>Submit</button>
             </label>
+            <button>Submit</button>
         </StyledForm>
 }
 
