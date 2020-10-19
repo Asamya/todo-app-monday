@@ -7,3 +7,10 @@ export const getTodos = () =>
 
 export const postToDo = (todo) =>
     axios.post(url, todo).then(response => response.data);
+
+export const putToDo = (todo) =>
+    axios.put(url + '/' + todo.id, todo).then(response => response.data)
+
+
+export const deleteToDoItem = (todoItemId) =>
+    axios.delete(url + '/' + todoItemId);

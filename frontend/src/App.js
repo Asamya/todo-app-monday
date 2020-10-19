@@ -5,13 +5,13 @@ import useTodos from './hooks/useTodos';
 import ToDoForm from "./components/ToDoForm";
 
 export default function App() {
-    const [todos, addToDo] = useTodos();
+    const [todos, addToDo, updateToDo, deleteToDo] = useTodos();
 
     return (
         <Main>
             <h1>Super Kanban Board </h1>
             <ToDoForm addToDo={addToDo}/>
-            <TodoList todos={todos} />
+            <TodoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
         </Main>
     );
 }

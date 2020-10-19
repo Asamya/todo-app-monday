@@ -2,39 +2,43 @@ import React from 'react';
 import Todo from './Todo';
 import styled from 'styled-components';
 
-export default function TodoList({ todos }) {
+export default function TodoList({ todos , updateToDo, deleteToDo}) {
 
 const openToDoList = todos.filter(todos => ( todos.status === "OPEN"));
-const inProgress = todos.filter(todos => (todos.status === "IN_PROGRESS"));
-const done = todos.filter(todos => (todos.status === "DONE"));
-
+const inProgressList = todos.filter(todos => (todos.status === "IN_PROGRESS"));
+const doneList = todos.filter(todos => (todos.status === "DONE"));
 
     return (
-        <div>
+        <StyledContainerList>
         <StyledList>
             {openToDoList.map((todo) => (
                 <li key={todo.id}>
-                    <Todo {...todo} />
+                    <Todo {...todo} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
+                </li>
+            ))}
+        </StyledList>
+        <StyledList>
+            {inProgressList.map((todo) => (
+                <li key={todo.id}>
+                    <Todo {...todo} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
                 </li>
             ))}
         </StyledList>
             <StyledList>
-                {inProgress.map((todo) => (
+                {doneList.map((todo) => (
                     <li key={todo.id}>
-                        <Todo {...todo} />
+                        <Todo {...todo} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
                     </li>
                 ))}
             </StyledList>
-            <StyledList>
-                {done.map((todo) => (
-                    <li key={todo.id}>
-                        <Todo {...todo} />
-                    </li>
-                ))}
-            </StyledList>
-        </div>
+        </StyledContainerList>
     );
 }
+
+const StyledContainerList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 300px) ;
+`
 
 const StyledList = styled.ul`
     list-style: none;
