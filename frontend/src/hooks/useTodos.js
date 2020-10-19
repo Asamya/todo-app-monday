@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getTodos } from '../service/todo-service';
+import {getTodos, postToDo} from '../service/todo-service';
 
 export default function useTodos() {
     const [todos, setTodos] = useState([]);
 
     function addToDo(toDo){
-        setTodos([...todos,toDo])
-    }
+        postToDo(toDo).then(newTodo => setTodos([...todos,newTodo]))
+    };
 
     useEffect(() => {
         getTodos().then((todos) => setTodos(todos));
