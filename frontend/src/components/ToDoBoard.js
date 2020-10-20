@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from './Todo';
+
 import styled from 'styled-components';
 import TodoList from "./TodoList";
 
@@ -11,7 +11,7 @@ export default function ({ todos , updateToDo, deleteToDo}) {
 
     return (
         <StyledContainerList>
-            {statuses.map(status=> <TodoList todos={getFilteredList(status)}/>)}
+            {statuses.map(status=> <TodoList todos={getFilteredList(status)} updateToDo={updateToDo} deleteToDo={deleteToDo} />)}
         </StyledContainerList>
     );
 }

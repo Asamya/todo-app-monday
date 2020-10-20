@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import TodoList from './components/TodoList';
 import useTodos from './hooks/useTodos';
 import ToDoForm from "./components/ToDoForm";
+import ToDoBoard from "./components/ToDoBoard";
 
 export default function App() {
     const [todos, addToDo, updateToDo, deleteToDo] = useTodos();
@@ -11,7 +11,7 @@ export default function App() {
         <Main>
             <h1>Super Kanban Board </h1>
             <ToDoForm addToDo={addToDo}/>
-            <TodoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
+            <ToDoBoard todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
         </Main>
     );
 }
